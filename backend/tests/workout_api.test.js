@@ -4,7 +4,7 @@ const app = require("../app");
 const Workout = require("../models/workoutModel");
 const User = require("../models/userModel");
 
-const api = supertest("../app");
+const api = supertest(app);
 
 const initialWorkouts = [
   {
@@ -51,7 +51,7 @@ describe("Workout API", () => {
     };
 
     const response = await api
-      .get("/api/users/signup")
+      .post("/api/users/signup")
       .send(newUser)
       .expect(201);
 
