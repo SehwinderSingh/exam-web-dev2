@@ -40,11 +40,25 @@ describe("Workout API", () => {
 
     expect(response.body).toHaveLength(initialWorkouts.length);
   });
-  // TODO (Q10): Write a test for GET /api/workouts
-  // - Verify status code is 200
-  // - Verify Content-Type contains application/json
-  // - Verify response body is an array with the correct length (matching initialWorkouts)
 
+  test("should signup a new user and should return a token", async () =>{
+    const newUser = {
+      name: "Test User",
+      username: "TestUser",
+      password: "savy1234#",
+      phone_number: "0123456789",
+      address: "Testlantie, Vanta"
+    };
+
+    const response = await api
+      .get("/api/users/signup")
+      .send(newUser)
+      .expect(200);
+
+    expect(response.body.username).toBe(newUser.username);
+    expect(response.body.token).toBeDefined();
+  });
+  
   // TODO (Q11): Write a test for POST /api/users/signup
   // - Create a valid new user object with all required fields (name, username, password, phone_number, address)
   // - Send a POST request to /api/users/signup
