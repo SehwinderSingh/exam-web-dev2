@@ -1,0 +1,2 @@
+backend/utils/config.js: I changed the config sile to change the prot form 4000 to 5003 
+frontend/vite.config.js: I changed the code here so that the frontend file can touch the backend and run on same port
