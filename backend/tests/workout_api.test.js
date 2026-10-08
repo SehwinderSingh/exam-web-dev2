@@ -32,6 +32,14 @@ beforeEach(async () => {
 });
 
 describe("Workout API", () => {
+  test("should return all workouts as json", async () => {
+    const response = await api
+      .get("/api/workouts")
+      .expect(200)
+      .expect("Content-Type", /application\/json/);
+
+    expect(response.body).toHaveLength(initialWorkouts.length);
+  });
   // TODO (Q10): Write a test for GET /api/workouts
   // - Verify status code is 200
   // - Verify Content-Type contains application/json
